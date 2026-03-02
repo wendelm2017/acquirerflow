@@ -121,7 +121,7 @@ public class TransactionTests
 
         var act = () => tx.Capture();
 
-        act.Should().Throw<DomainException>()
+        act.Should().Throw<InvalidOperationException>()
             .WithMessage("*Cannot capture*PENDING*");
     }
 }

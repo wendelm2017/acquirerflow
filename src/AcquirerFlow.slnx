@@ -19,6 +19,8 @@
   </Folder>
   <Folder Name="/Shared/">
     <Project Path="Shared/AcquirerFlow.Contracts/AcquirerFlow.Contracts.csproj" />
+    <Project Path="Shared/AcquirerFlow.Infrastructure/AcquirerFlow.Infrastructure.csproj" />
   </Folder>
   <Project Path="../tests/AcquirerFlow.Authorization.UnitTests/AcquirerFlow.Authorization.UnitTests.csproj" />
+  <Project Path="../tests/AcquirerFlow.Settlement.UnitTests/AcquirerFlow.Settlement.UnitTests.csproj" />
 </Solution>

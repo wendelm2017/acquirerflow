@@ -4,6 +4,15 @@
     <ProjectReference Include="..\AcquirerFlow.Authorization.Application\AcquirerFlow.Authorization.Application.csproj" />
     <ProjectReference Include="..\AcquirerFlow.Authorization.Domain\AcquirerFlow.Authorization.Domain.csproj" />
     <ProjectReference Include="..\AcquirerFlow.Authorization.CrossCutting\AcquirerFlow.Authorization.CrossCutting.csproj" />
+    <ProjectReference Include="..\..\..\Shared\AcquirerFlow.Infrastructure\AcquirerFlow.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.4" />
   </ItemGroup>
 
   <PropertyGroup>

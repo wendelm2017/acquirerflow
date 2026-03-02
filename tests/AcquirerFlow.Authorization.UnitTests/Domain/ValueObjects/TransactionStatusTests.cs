@@ -43,7 +43,7 @@ public class TransactionStatusTests
 
         var act = () => status.Authorize();
 
-        act.Should().Throw<DomainException>()
+        act.Should().Throw<InvalidOperationException>()
             .WithMessage("*Cannot authorize*AUTHORIZED*");
     }
 
@@ -54,7 +54,7 @@ public class TransactionStatusTests
 
         var act = () => status.Capture();
 
-        act.Should().Throw<DomainException>()
+        act.Should().Throw<InvalidOperationException>()
             .WithMessage("*Cannot capture*DECLINED*");
     }
 }

@@ -17,5 +17,6 @@
     <ProjectReference Include="..\AcquirerFlow.Capture.Domain\AcquirerFlow.Capture.Domain.csproj" />
     <ProjectReference Include="..\AcquirerFlow.Capture.Application\AcquirerFlow.Capture.Application.csproj" />
     <ProjectReference Include="..\..\..\Shared\AcquirerFlow.Contracts\AcquirerFlow.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Shared\AcquirerFlow.Infrastructure\AcquirerFlow.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

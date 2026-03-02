@@ -29,8 +29,8 @@ public class CardTokenTests
     {
         var act = () => CardToken.Create("tok_abc", "1234", "DINERS");
 
-        act.Should().Throw<DomainException>()
-            .WithMessage("*Invalid card brand*");
+        act.Should().Throw<ArgumentException>()
+            .WithMessage("*Invalid brand*");
     }
 
     [Fact]
@@ -38,8 +38,8 @@ public class CardTokenTests
     {
         var act = () => CardToken.Create("tok_abc", "12", "VISA");
 
-        act.Should().Throw<DomainException>()
-            .WithMessage("*4 numeric*");
+        act.Should().Throw<ArgumentException>()
+            .WithMessage("*4 digits*");
     }
 
     [Fact]
@@ -47,8 +47,8 @@ public class CardTokenTests
     {
         var act = () => CardToken.Create("tok_abc", "ABCD", "VISA");
 
-        act.Should().Throw<DomainException>()
-            .WithMessage("*4 numeric*");
+        act.Should().Throw<ArgumentException>()
+            .WithMessage("*4 digits*");
     }
 
     [Fact]
@@ -56,8 +56,8 @@ public class CardTokenTests
     {
         var act = () => CardToken.Create("", "1234", "VISA");
 
-        act.Should().Throw<DomainException>()
-            .WithMessage("*empty*");
+        act.Should().Throw<ArgumentException>()
+            .WithMessage("*required*");
     }
 
     [Fact]

@@ -20,7 +20,7 @@ public class MoneyTests
     {
         var act = () => Money.Create(-10m);
 
-        act.Should().Throw<DomainException>()
+        act.Should().Throw<ArgumentException>()
             .WithMessage("*negative*");
     }
 
@@ -29,7 +29,7 @@ public class MoneyTests
     {
         var act = () => Money.Create(100m, "ABCD");
 
-        act.Should().Throw<DomainException>()
+        act.Should().Throw<ArgumentException>()
             .WithMessage("*3-letter*");
     }
 
@@ -60,7 +60,7 @@ public class MoneyTests
 
         var act = () => brl.Add(usd);
 
-        act.Should().Throw<DomainException>()
+        act.Should().Throw<InvalidOperationException>()
             .WithMessage("*different currencies*");
     }
 

@@ -38,6 +38,7 @@ public sealed class SettlementBatch
 
     public void Process(decimal mdrRate = 0.025m, decimal interchangeRate = 0.015m, decimal schemeFeeRate = 0.003m)
     {
+        if (Status == "PROCESSED") throw new InvalidOperationException("Batch already processed");
         if (!_items.Any())
             throw new InvalidOperationException("Cannot process empty settlement batch");
 

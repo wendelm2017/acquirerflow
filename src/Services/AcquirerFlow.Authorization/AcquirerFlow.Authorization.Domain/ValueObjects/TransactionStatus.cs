@@ -2,8 +2,9 @@ namespace AcquirerFlow.Authorization.Domain.ValueObjects;
 
 public sealed record TransactionStatus
 {
-    public string Value { get; }
+    public string Value { get; init; } = string.Empty;
 
+    private TransactionStatus() { } // EF Core
     private TransactionStatus(string value) => Value = value;
 
     public static TransactionStatus Pending => new("PENDING");
@@ -15,22 +16,19 @@ public sealed record TransactionStatus
 
     public TransactionStatus Authorize()
     {
-        if (Value != "PENDING")
-            throw new DomainException($"Cannot authorize transaction in status {Value}");
+        if (Value != "PENDING") throw new InvalidOperationException($"Cannot authorize from {Value}");
         return Authorized;
     }
 
     public TransactionStatus Decline()
     {
-        if (Value != "PENDING")
-            throw new DomainException($"Cannot decline transaction in status {Value}");
+        if (Value != "PENDING") throw new InvalidOperationException($"Cannot decline from {Value}");
         return Declined;
     }
 
     public TransactionStatus Capture()
     {
-        if (Value != "AUTHORIZED")
-            throw new DomainException($"Cannot capture transaction in status {Value}");
+        if (Value != "AUTHORIZED") throw new InvalidOperationException($"Cannot capture from {Value}");
         return Captured;
     }
 

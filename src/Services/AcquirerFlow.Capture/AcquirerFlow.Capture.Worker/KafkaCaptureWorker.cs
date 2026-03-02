@@ -1,24 +1,30 @@
 using System.Text.Json;
-using Confluent.Kafka;
 using AcquirerFlow.Capture.Application.Services;
 using AcquirerFlow.Contracts.Events;
+using Confluent.Kafka;
 using MassTransit;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace AcquirerFlow.Capture.Worker;
 
 public class KafkaCaptureWorker : BackgroundService
 {
-    private readonly CaptureService _captureService;
-    private readonly IBus _bus;
-    private readonly IConsumer<string, string> _consumer;
     private readonly ILogger<KafkaCaptureWorker> _logger;
-    private const string Topic = "transaction-authorized";
+    private readonly IServiceScopeFactory _scopeFactory;
+    private readonly IBus _bus;
 
-    public KafkaCaptureWorker(CaptureService captureService, IBus bus, ILogger<KafkaCaptureWorker> logger)
+    public KafkaCaptureWorker(ILogger<KafkaCaptureWorker> logger, IServiceScopeFactory scopeFactory, IBus bus)
     {
-        _captureService = captureService;
-        _bus = bus;
         _logger = logger;
+        _scopeFactory = scopeFactory;
+        _bus = bus;
+    }
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        _logger.LogInformation("[CAPTURE WORKER] Listening on Kafka topic: transaction-authorized");
 
         var config = new ConsumerConfig
         {
@@ -28,66 +34,46 @@ public class KafkaCaptureWorker : BackgroundService
             EnableAutoCommit = false
         };
 
-        _consumer = new ConsumerBuilder<string, string>(config).Build();
-    }
-
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-    {
-        _consumer.Subscribe(Topic);
-        _logger.LogInformation("[CAPTURE WORKER] Listening on Kafka topic: {Topic}", Topic);
-
-        await Task.Yield();
+        using var consumer = new ConsumerBuilder<Ignore, string>(config).Build();
+        consumer.Subscribe("transaction-authorized");
 
         while (!stoppingToken.IsCancellationRequested)
         {
             try
             {
-                var result = _consumer.Consume(TimeSpan.FromSeconds(1));
-                if (result == null) continue;
+                var result = consumer.Consume(TimeSpan.FromSeconds(1));
+                if (result is null) continue;
 
-                _logger.LogInformation("[CAPTURE WORKER] Kafka msg | Partition: {P} | Offset: {O}",
-                    result.Partition, result.Offset);
+                _logger.LogInformation("[CAPTURE WORKER] Kafka msg | Partition: [{p}] | Offset: {o}",
+                    result.Partition.Value, result.Offset.Value);
 
-                var @event = JsonSerializer.Deserialize<TransactionAuthorized>(result.Message.Value);
+                var evt = JsonSerializer.Deserialize<TransactionAuthorized>(result.Message.Value);
+                if (evt is null) continue;
 
-                if (@event != null)
-                {
-                    await _captureService.ProcessAuthorizationAsync(@event);
-                    _consumer.Commit(result);
+                Console.WriteLine($"[KAFKA] Topic: transaction-authorized | Partition: [{result.Partition.Value}] | Offset: {result.Offset.Value}");
 
-                    // Publica TransactionCaptured no RabbitMQ pro Settlement
-                    var capturedEvent = new TransactionCaptured(
-                        @event.TransactionId,
-                        @event.MerchantId,
-                        @event.CardToken,
-                        @event.CardBrand,
-                        @event.Amount,
-                        @event.Currency,
-                        @event.Installments,
-                        @event.Type,
-                        @event.AuthorizationCode,
-                        DateTime.UtcNow);
+                using var scope = _scopeFactory.CreateScope();
+                var captureService = scope.ServiceProvider.GetRequiredService<CaptureService>();
 
-                    await _bus.Publish(capturedEvent, stoppingToken);
-                    _logger.LogInformation("[CAPTURE WORKER] Published TransactionCaptured to RabbitMQ");
-                }
+                await captureService.ProcessAuthorizationAsync(evt);
+
+                Console.WriteLine($"[CAPTURE] Transaction {evt.TransactionId} captured: {evt.Currency} {evt.Amount:F2}");
+
+                // Publish to RabbitMQ
+                var capturedEvent = new TransactionCaptured(
+                    evt.TransactionId, evt.MerchantId, evt.CardToken, evt.CardBrand,
+                    evt.Amount, evt.Currency, evt.Installments, evt.Type,
+                    evt.AuthorizationCode, DateTime.UtcNow);
+
+                await _bus.Publish(capturedEvent, stoppingToken);
+                _logger.LogInformation("[CAPTURE WORKER] Published TransactionCaptured to RabbitMQ");
+
+                consumer.Commit(result);
             }
             catch (ConsumeException ex)
             {
                 _logger.LogError(ex, "[CAPTURE WORKER] Kafka consume error");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "[CAPTURE WORKER] Processing error");
-            }
         }
-
-        _consumer.Close();
-    }
-
-    public override void Dispose()
-    {
-        _consumer?.Dispose();
-        base.Dispose();
     }
 }
