@@ -7,6 +7,11 @@
     <Project Path="Services/AcquirerFlow.Authorization/AcquirerFlow.Authorization.CrossCutting/AcquirerFlow.Authorization.CrossCutting.csproj" />
     <Project Path="Services/AcquirerFlow.Authorization/AcquirerFlow.Authorization.Domain/AcquirerFlow.Authorization.Domain.csproj" />
   </Folder>
+  <Folder Name="/Services/AcquirerFlow.Capture/">
+    <Project Path="Services/AcquirerFlow.Capture/AcquirerFlow.Capture.Application/AcquirerFlow.Capture.Application.csproj" />
+    <Project Path="Services/AcquirerFlow.Capture/AcquirerFlow.Capture.Domain/AcquirerFlow.Capture.Domain.csproj" />
+    <Project Path="Services/AcquirerFlow.Capture/AcquirerFlow.Capture.Worker/AcquirerFlow.Capture.Worker.csproj" />
+  </Folder>
   <Folder Name="/Shared/">
     <Project Path="Shared/AcquirerFlow.Contracts/AcquirerFlow.Contracts.csproj" />
   </Folder>
