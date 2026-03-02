@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\AcquirerFlow.Settlement.Domain\AcquirerFlow.Settlement.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Shared\AcquirerFlow.Contracts\AcquirerFlow.Contracts.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

@@ -12,6 +12,11 @@
     <Project Path="Services/AcquirerFlow.Capture/AcquirerFlow.Capture.Domain/AcquirerFlow.Capture.Domain.csproj" />
     <Project Path="Services/AcquirerFlow.Capture/AcquirerFlow.Capture.Worker/AcquirerFlow.Capture.Worker.csproj" />
   </Folder>
+  <Folder Name="/Services/AcquirerFlow.Settlement/">
+    <Project Path="Services/AcquirerFlow.Settlement/AcquirerFlow.Settlement.Application/AcquirerFlow.Settlement.Application.csproj" />
+    <Project Path="Services/AcquirerFlow.Settlement/AcquirerFlow.Settlement.Domain/AcquirerFlow.Settlement.Domain.csproj" />
+    <Project Path="Services/AcquirerFlow.Settlement/AcquirerFlow.Settlement.Worker/AcquirerFlow.Settlement.Worker.csproj" />
+  </Folder>
   <Folder Name="/Shared/">
     <Project Path="Shared/AcquirerFlow.Contracts/AcquirerFlow.Contracts.csproj" />
   </Folder>

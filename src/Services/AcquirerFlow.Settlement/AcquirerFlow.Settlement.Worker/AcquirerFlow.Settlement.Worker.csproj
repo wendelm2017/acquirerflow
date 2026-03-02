@@ -4,18 +4,17 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-AcquirerFlow.Capture.Worker-84c422c3-d11e-425b-b63c-b64b2325d934</UserSecretsId>
+    <UserSecretsId>dotnet-AcquirerFlow.Settlement.Worker-6a9e5489-74c8-4641-a49a-0ce474b1b071</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Confluent.Kafka" Version="2.13.2" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.5" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AcquirerFlow.Capture.Domain\AcquirerFlow.Capture.Domain.csproj" />
-    <ProjectReference Include="..\AcquirerFlow.Capture.Application\AcquirerFlow.Capture.Application.csproj" />
+    <ProjectReference Include="..\AcquirerFlow.Settlement.Domain\AcquirerFlow.Settlement.Domain.csproj" />
+    <ProjectReference Include="..\AcquirerFlow.Settlement.Application\AcquirerFlow.Settlement.Application.csproj" />
     <ProjectReference Include="..\..\..\Shared\AcquirerFlow.Contracts\AcquirerFlow.Contracts.csproj" />
   </ItemGroup>
 </Project>
