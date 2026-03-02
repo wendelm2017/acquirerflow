@@ -1,0 +1,6 @@
+@AcquirerFlow.Authorization.Adapters.Driving_HostAddress = http://localhost:5122
+
+GET {{AcquirerFlow.Authorization.Adapters.Driving_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

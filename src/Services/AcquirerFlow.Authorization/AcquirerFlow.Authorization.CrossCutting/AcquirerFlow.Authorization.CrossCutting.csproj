@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\AcquirerFlow.Authorization.Domain\AcquirerFlow.Authorization.Domain.csproj" />
+    <ProjectReference Include="..\AcquirerFlow.Authorization.Application\AcquirerFlow.Authorization.Application.csproj" />
+    <ProjectReference Include="..\AcquirerFlow.Authorization.Adapters.Driven\AcquirerFlow.Authorization.Adapters.Driven.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\AcquirerFlow.Authorization.Application\AcquirerFlow.Authorization.Application.csproj" />
+    <ProjectReference Include="..\AcquirerFlow.Authorization.Domain\AcquirerFlow.Authorization.Domain.csproj" />
+    <ProjectReference Include="..\AcquirerFlow.Authorization.CrossCutting\AcquirerFlow.Authorization.CrossCutting.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Services/" />
+  <Folder Name="/Services/AcquirerFlow.Authorization/">
+    <Project Path="Services/AcquirerFlow.Authorization/AcquirerFlow.Authorization.Adapters.Driven/AcquirerFlow.Authorization.Adapters.Driven.csproj" />
+    <Project Path="Services/AcquirerFlow.Authorization/AcquirerFlow.Authorization.Adapters.Driving/AcquirerFlow.Authorization.Adapters.Driving.csproj" />
+    <Project Path="Services/AcquirerFlow.Authorization/AcquirerFlow.Authorization.Application/AcquirerFlow.Authorization.Application.csproj" />
+    <Project Path="Services/AcquirerFlow.Authorization/AcquirerFlow.Authorization.CrossCutting/AcquirerFlow.Authorization.CrossCutting.csproj" />
+    <Project Path="Services/AcquirerFlow.Authorization/AcquirerFlow.Authorization.Domain/AcquirerFlow.Authorization.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="Shared/AcquirerFlow.Contracts/AcquirerFlow.Contracts.csproj" />
+  </Folder>
+</Solution>
