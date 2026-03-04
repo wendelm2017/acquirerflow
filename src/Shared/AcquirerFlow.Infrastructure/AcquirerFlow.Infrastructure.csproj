@@ -14,8 +14,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <!-- This project has no .resx resources. Override CoreResGen to prevent
-       MSB3552 on Linux CI where the SDK glob **/*.resx fails to expand. -->
-  <Target Name="CoreResGen" />
 </Project>
