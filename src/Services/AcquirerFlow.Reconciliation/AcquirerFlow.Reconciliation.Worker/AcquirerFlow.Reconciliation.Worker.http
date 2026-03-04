@@ -1,0 +1,6 @@
+@AcquirerFlow.Reconciliation.Worker_HostAddress = http://localhost:5047
+
+GET {{AcquirerFlow.Reconciliation.Worker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

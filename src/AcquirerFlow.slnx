@@ -12,6 +12,11 @@
     <Project Path="Services/AcquirerFlow.Capture/AcquirerFlow.Capture.Domain/AcquirerFlow.Capture.Domain.csproj" />
     <Project Path="Services/AcquirerFlow.Capture/AcquirerFlow.Capture.Worker/AcquirerFlow.Capture.Worker.csproj" />
   </Folder>
+  <Folder Name="/Services/AcquirerFlow.Reconciliation/">
+    <Project Path="Services/AcquirerFlow.Reconciliation/AcquirerFlow.Reconciliation.Application/AcquirerFlow.Reconciliation.Application.csproj" />
+    <Project Path="Services/AcquirerFlow.Reconciliation/AcquirerFlow.Reconciliation.Domain/AcquirerFlow.Reconciliation.Domain.csproj" />
+    <Project Path="Services/AcquirerFlow.Reconciliation/AcquirerFlow.Reconciliation.Worker/AcquirerFlow.Reconciliation.Worker.csproj" />
+  </Folder>
   <Folder Name="/Services/AcquirerFlow.Settlement/">
     <Project Path="Services/AcquirerFlow.Settlement/AcquirerFlow.Settlement.Application/AcquirerFlow.Settlement.Application.csproj" />
     <Project Path="Services/AcquirerFlow.Settlement/AcquirerFlow.Settlement.Domain/AcquirerFlow.Settlement.Domain.csproj" />
@@ -22,5 +27,6 @@
     <Project Path="Shared/AcquirerFlow.Infrastructure/AcquirerFlow.Infrastructure.csproj" />
   </Folder>
   <Project Path="../tests/AcquirerFlow.Authorization.UnitTests/AcquirerFlow.Authorization.UnitTests.csproj" />
+  <Project Path="../tests/AcquirerFlow.Reconciliation.UnitTests/AcquirerFlow.Reconciliation.UnitTests.csproj" />
   <Project Path="../tests/AcquirerFlow.Settlement.UnitTests/AcquirerFlow.Settlement.UnitTests.csproj" />
 </Solution>

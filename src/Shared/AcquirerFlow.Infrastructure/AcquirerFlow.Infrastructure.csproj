@@ -5,6 +5,7 @@
     <ProjectReference Include="..\..\Services\AcquirerFlow.Capture\AcquirerFlow.Capture.Domain\AcquirerFlow.Capture.Domain.csproj" />
     <ProjectReference Include="..\..\Services\AcquirerFlow.Settlement\AcquirerFlow.Settlement.Domain\AcquirerFlow.Settlement.Domain.csproj" />
     <ProjectReference Include="..\AcquirerFlow.Contracts\AcquirerFlow.Contracts.csproj" />
+    <ProjectReference Include="..\..\Services\AcquirerFlow.Reconciliation\AcquirerFlow.Reconciliation.Domain\AcquirerFlow.Reconciliation.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

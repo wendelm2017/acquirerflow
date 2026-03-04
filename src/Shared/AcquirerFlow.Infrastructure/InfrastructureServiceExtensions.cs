@@ -1,8 +1,9 @@
 using AcquirerFlow.Authorization.Domain.Ports.Out;
 using AcquirerFlow.Capture.Domain.Ports.Out;
-using AcquirerFlow.Settlement.Domain.Ports.Out;
 using AcquirerFlow.Infrastructure.Context;
 using AcquirerFlow.Infrastructure.Repositories;
+using AcquirerFlow.Reconciliation.Domain.Ports.Out;
+using AcquirerFlow.Settlement.Domain.Ports.Out;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,7 +11,8 @@ namespace AcquirerFlow.Infrastructure;
 
 public static class InfrastructureServiceExtensions
 {
-    public static IServiceCollection AddAcquirerFlowInfrastructure(this IServiceCollection services, string connectionString)
+    public static IServiceCollection AddAcquirerFlowInfrastructure(
+        this IServiceCollection services, string connectionString)
     {
         services.AddDbContext<AcquirerFlowDbContext>(options =>
             options.UseSqlServer(connectionString));
@@ -18,6 +20,8 @@ public static class InfrastructureServiceExtensions
         services.AddScoped<ITransactionRepository, EfTransactionRepository>();
         services.AddScoped<ICaptureRepository, EfCaptureRepository>();
         services.AddScoped<ISettlementRepository, EfSettlementRepository>();
+        services.AddScoped<IReconciliationRepository, EfReconciliationRepository>();
+        services.AddScoped<ITransactionDataSource, EfTransactionDataSource>();
 
         return services;
     }
