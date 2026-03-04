@@ -416,3 +416,9 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Keep Ports (hexagonal architecture)
+
+# Keep Ports - hexagonal architecture
+!**/Ports/
+!**/Ports/**
