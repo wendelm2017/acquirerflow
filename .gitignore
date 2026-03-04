@@ -425,3 +425,4 @@ FodyWeavers.xsd
 bin\Debug/
 bin/
 obj/
+bin\\Debug/
