@@ -83,7 +83,7 @@ jobs:
         with:
           context: .
           file: ${{ matrix.service.dockerfile }}
-          push: true
+          push: false
           tags: |
             ghcr.io/${{ github.repository }}/acquirerflow-${{ matrix.service.name }}:latest
             ghcr.io/${{ github.repository }}/acquirerflow-${{ matrix.service.name }}:${{ github.sha }}
