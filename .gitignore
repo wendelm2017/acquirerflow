@@ -423,3 +423,5 @@ FodyWeavers.xsd
 !**/Ports/
 !**/Ports/**
 bin\Debug/
+bin/
+obj/
