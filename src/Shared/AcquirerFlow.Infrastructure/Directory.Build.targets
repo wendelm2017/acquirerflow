@@ -1,7 +1,0 @@
-<Project>
-  <Target Name="RemoveResxGlob" BeforeTargets="PrepareForBuild">
-    <ItemGroup>
-      <EmbeddedResource Remove="**/*.resx" />
-    </ItemGroup>
-  </Target>
-</Project>
