@@ -26,7 +26,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Build
-        run: dotnet build src/AcquirerFlow.slnx --configuration Release -p:EnableDefaultEmbeddedResourceItems=false
+        run: dotnet build src/AcquirerFlow.slnx --configuration Release
 
       - name: Run Unit Tests
         run: |
