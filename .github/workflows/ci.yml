@@ -25,11 +25,8 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore
-        run: dotnet restore src/AcquirerFlow.slnx
-
       - name: Build
-        run: dotnet build src/AcquirerFlow.slnx --configuration Release --no-restore
+        run: dotnet build src/AcquirerFlow.slnx --configuration Release
 
       - name: Run Unit Tests
         run: |

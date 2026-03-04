@@ -14,13 +14,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <!-- Fix: EF Core transitively adds **/*.resx to EmbeddedResource but no .resx files exist.
-       On GitHub Actions Linux, the glob is passed as literal string to GenerateResource, which fails.
-       This target removes non-existent EmbeddedResource items before compilation. -->
-  <Target Name="CleanPhantomResx" BeforeTargets="CoreCompile;GenerateResource">
-    <ItemGroup>
-      <EmbeddedResource Remove="@(EmbeddedResource)" Condition="!Exists('%(Identity)')" />
-    </ItemGroup>
-  </Target>
 </Project>
